@@ -6,9 +6,9 @@
             <p class="cartItemElem">
                 <img :src='item.book.volumeInfo.imageLinks.smallThumbnail' alt="Картинка">
             </p>
-            <p class="cartItemElem">{{item.book.volumeInfo.description}}</p>
+            <p class="cartItemElem desc">{{item.book.volumeInfo.description}}</p>
             <p class="cartItemElem">{{item.quantity}}</p>
-            <p class="cartItemElem">{{item.totalPrice}}</p>
+            <p class="cartItemElem">{{item.totalPrice.toFixed(2)}} <span>грн.</span></p>
 
         </div>
         <hr>
@@ -73,4 +73,6 @@
     .cartFooter{
         text-align: right;
     }
+
+
 </style>

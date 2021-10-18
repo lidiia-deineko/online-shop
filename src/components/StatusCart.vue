@@ -1,6 +1,6 @@
 <template>
     <div v-if="cart.length">
-       Добавлено {{$store.state.cartCount}} товаров на сумму {{$store.getters.totalPrice}}
+       Добавлено {{$store.state.cartCount}} товаров на сумму {{$store.getters.totalPrice}}<span>грн.</span>
     </div>
 </template>
 

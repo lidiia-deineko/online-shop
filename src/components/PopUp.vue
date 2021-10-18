@@ -4,7 +4,7 @@
         <p>
             <img :src='book.volumeInfo.imageLinks.smallThumbnail' alt="Картинка">
         </p>
-        <p><strong>Описание: </strong>{{book.volumeInfo.description}}</p>
+        <p class="desc"><strong>Описание: </strong>{{book.volumeInfo.description}}</p>
         <form>
             <h4>Оформить заказ</h4>
             <div class="formItem">
@@ -61,14 +61,27 @@
                 return reg.test(this.inputPhone);
             },
             addToCart(e){
+
                 if (this.inputName.length<2) {
                     this.showNameError = true
-                } if (!this.validEmail()) {
+                }if (this.inputName.length>=2) {
+                    this.showNameError = false
+                }if (!this.validEmail()) {
                     this.showEmailError = true
-                } if (!this.validPhone()) {
+                }if (this.validEmail()) {
+                    this.showEmailError = false
+                }if (!this.validPhone()) {
                     this.showPhoneError = true
-                } else {
+                }if (this.validPhone()) {
+                    this.showPhoneError = false
+                }if (this.inputName.length>=2 &&
+                    this.validEmail() &&
+                    this.validPhone())
+                {
                     this.closePopUp()
+                    this.inputName = ''
+                    this.inputEmail = ''
+                    this.inputPhone = ''
                     this.$store.commit('addToCart', {book: this.book})
                 }
                 e.preventDefault()
@@ -102,5 +115,9 @@
 
     .formItem{
         padding-bottom: 10px;
+    }
+
+    .desc{
+        font-size: 12px;
     }
 </style>
